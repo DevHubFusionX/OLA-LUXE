@@ -337,8 +337,7 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
                                 e.preventDefault();
                                 e.stopPropagation();
                                 if (step === 1) {
-                                    const isValid = await handleSubmit(() => true, () => false)();
-                                    if (isValid !== false) setStep(2);
+                                    await handleSubmit(() => setStep(2), () => {})();
                                 } else if (step === 2) {
                                     const images = watchedImages?.filter((img: string) => img) || [];
                                     if (images.length > 0) {

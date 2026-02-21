@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-beige: #D4C5B9;
-  --color-brand-peach: #FFB5A0;
+  --color-brand-peach: #FEE2E2;
   --color-brand-cream: #FFFFFF;
-  --color-brand-stone: #D4C5B9;
-  --color-brand-accent: #FFB5A0;
+  --color-brand-stone: #DC2626;
+  --color-brand-accent: #10B981;
 
   --background: var(--color-brand-cream);
-  --foreground: #000000;
+  --foreground: #1F2937;
 }
 
 :root {
   --background: #FFFFFF;
-  --foreground: #000000;
-  --beige: #D4C5B9;
-  --peach: #FFB5A0;
+  --foreground: #1F2937;
+  --peach: #FEE2E2;
+  --accent: #10B981;
+  --sidebar: #DC2626;
+  --link: #DC2626;
+  --button: #10B981;
 }
 
 body {
@@ -34,5 +36,5 @@ body {
 }
 
 .soft-shadow {
-  box-shadow: 0 10px 30px -10px rgba(212, 197, 185, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(187, 8, 15, 0.05);
 }

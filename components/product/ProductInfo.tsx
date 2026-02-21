@@ -37,7 +37,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-0.5">
                         {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 text-[#FFB5A0] fill-current" />
+                            <Star key={i} className="w-3 h-3 text-[#00a651] fill-current" />
                         ))}
                     </div>
                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">( 0 ratings )</span>
@@ -46,14 +46,14 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
             <div className="space-y-4">
                 <div className="flex items-baseline gap-4">
-                    <p className="text-3xl font-black text-[#FFB5A0] italic tracking-tighter">
+                    <p className="text-3xl font-black text-[#00a651] italic tracking-tighter">
                         ₦{product.price.toLocaleString()}
                     </p>
                     <p className="text-lg font-bold text-gray-300 line-through">
                         ₦{(product.price * 1.5).toLocaleString()}
                     </p>
                 </div>
-                <p className="text-[#FFB5A0] text-[10px] font-black uppercase tracking-widest bg-orange-50 px-3 py-1 rounded-full w-fit border border-orange-100">
+                <p className="text-[#00a651] text-[10px] font-black uppercase tracking-widest bg-green-50 px-3 py-1 rounded-full w-fit border border-green-100">
                     In Stock
                 </p>
             </div>
@@ -68,7 +68,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                                 </label>
                                 <div className="relative">
                                     <select
-                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#FFB5A0] focus:bg-white rounded-2xl py-4 px-6 text-xs font-bold text-gray-900 appearance-none outline-none transition-all"
+                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#00a651] focus:bg-white rounded-2xl py-4 px-6 text-xs font-bold text-gray-900 appearance-none outline-none transition-all"
                                         onChange={(e) => setSelectedVariations({ ...selectedVariations, [variation.type]: e.target.value })}
                                         value={selectedVariations[variation.type] || ''}
                                     >
@@ -91,7 +91,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                         <div className="flex items-center border-2 border-gray-50 rounded-[2rem] bg-gray-50 h-16 w-full sm:w-auto overflow-hidden">
                             <button
                                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                className="px-6 h-full hover:text-[#FFB5A0] transition-colors"
+                                className="px-6 h-full hover:text-[#00a651] transition-colors"
                             >
                                 <Minus className="w-4 h-4" />
                             </button>
@@ -100,7 +100,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                             </span>
                             <button
                                 onClick={() => setQuantity(quantity + 1)}
-                                className="px-6 h-full hover:text-[#FFB5A0] transition-colors"
+                                className="px-6 h-full hover:text-[#00a651] transition-colors"
                             >
                                 <Plus className="w-4 h-4" />
                             </button>
@@ -109,7 +109,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                         <button
                             onClick={handleAddToCart}
                             disabled={isAdding}
-                            className="w-full sm:flex-1 bg-[#D4C5B9] text-black h-16 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl shadow-stone-900/10 hover:bg-[#C4B5A9] active:scale-[0.98] disabled:opacity-70 disabled:grayscale flex items-center justify-center gap-2"
+                            className="w-full sm:flex-1 bg-[#00a651] text-white h-16 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl shadow-green-900/10 hover:bg-[#008c44] active:scale-[0.98] disabled:opacity-70 disabled:grayscale flex items-center justify-center gap-2"
                         >
                             {isAdding ? (
                                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
