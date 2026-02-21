@@ -16,6 +16,10 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 export const metadata: Metadata = {
   title: "Olaluxe.ng | Premium Jewelry & Accessories",
   description: "Shop premium minimalist jewelry and luxury female essentials at olaluxe.ng.",
+  icons: {
+    icon: '/logo1.svg',
+    apple: '/logo1.svg',
+  },
 };
 
 export default function RootLayout({

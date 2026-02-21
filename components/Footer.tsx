@@ -1,12 +1,25 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 
 export default function Footer() {
     return (
         <footer className="bg-anchor-espresso text-bg-warm-beige pt-20 pb-12 grain-texture">
             <div className="container mx-auto px-4">
+                <div className="mb-16">
+                    <Link href="/" className="inline-block mb-10">
+                        <Image
+                            src="/logo1.svg"
+                            alt="Olaluxe.ng"
+                            width={120}
+                            height={120}
+                            className="h-12 w-auto brightness-0 invert opacity-80"
+                        />
+                    </Link>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
                     {/* Contact Us */}
                     <div>

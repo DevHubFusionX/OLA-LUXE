@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
+import Image from 'next/image';
 import { LayoutDashboard, Package, List, LogOut, Menu, X } from 'lucide-react';
 
 const links = [
@@ -46,12 +47,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {sidebarOpen && <div onClick={() => setSidebarOpen(false)} className="fixed inset-0 bg-black/50 z-40 md:hidden" />}
 
       {/* Sidebar */}
-      <aside className={`fixed md:sticky top-0 h-screen w-64 bg-white border-r flex-col z-50 transition-transform md:translate-x-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } md:flex flex`}>
+      <aside className={`fixed md:sticky top-0 h-screen w-64 bg-white border-r flex-col z-50 transition-transform md:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } md:flex flex`}>
         <div className="p-6 border-b flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-black">O</div>
+            <Image
+              src="/logo1.svg"
+              alt="Olaluxe"
+              width={36}
+              height={36}
+              className="h-9 w-auto"
+            />
             <span className="font-black text-xl">Olaluxe</span>
           </Link>
           <button onClick={() => setSidebarOpen(false)} className="md:hidden p-2 hover:bg-slate-100 rounded-lg">
@@ -64,9 +70,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               key={href}
               href={href}
               onClick={() => setSidebarOpen(false)}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg font-semibold text-sm transition-colors ${
-                pathname === href ? 'bg-emerald-500 text-white' : 'text-slate-600 hover:bg-slate-100'
-              }`}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg font-semibold text-sm transition-colors ${pathname === href ? 'bg-emerald-500 text-white' : 'text-slate-600 hover:bg-slate-100'
+                }`}
             >
               <Icon className="w-5 h-5" />
               {name}
