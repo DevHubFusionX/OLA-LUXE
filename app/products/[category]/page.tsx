@@ -3,9 +3,7 @@
 import React, { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Header from '@/components/Header';
-import MobileMenu from '@/components/MobileMenu';
 import ProductCard from '@/components/ProductCard';
-import CartDrawer from '@/components/CartDrawer';
 import ProductSkeleton from '@/components/ProductSkeleton';
 import { useProducts } from '@/hooks/useProducts';
 import { useCategories } from '@/hooks/useCategories';
@@ -33,10 +31,7 @@ export default function CategoryPage() {
 
     return (
         <main className="min-h-screen bg-white pb-20 pt-28">
-            <Header
-                onCartClick={() => setIsCartOpen(true)}
-                onMenuClick={() => setIsMenuOpen(true)}
-            />
+            <Header />
 
             <div className="container mx-auto px-4 py-8">
                 {/* Back Link / Breadcrumb */}
@@ -105,8 +100,6 @@ export default function CategoryPage() {
                 )}
             </div>
 
-            <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         </main>
     );
 }

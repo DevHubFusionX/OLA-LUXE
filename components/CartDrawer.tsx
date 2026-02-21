@@ -11,12 +11,21 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface CartDrawerProps {
-    isOpen: boolean;
-    onClose: () => void;
+    // No props needed after globalizing cart state
 }
 
-export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
-    const { cart, addToCart, removeFromCart, removeItem, totalPrice, totalItems } = useCart();
+export default function CartDrawer({ }: CartDrawerProps) {
+    const {
+        cart,
+        addToCart,
+        removeFromCart,
+        removeItem,
+        totalPrice,
+        totalItems,
+        isCartOpen,
+        setIsCartOpen
+    } = useCart();
+    const onClose = () => setIsCartOpen(false);
     const [isCheckout, setIsCheckout] = useState(false);
     const { data: deliveryZones = [] } = useDeliveryZones();
     const [formData, setFormData] = useState<{
@@ -76,7 +85,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
     return (
         <AnimatePresence>
-            {isOpen && (
+            {isCartOpen && (
                 <>
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -114,7 +123,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                 <>
                                     {cart.length === 0 ? (
                                         <div className="h-full flex flex-col items-center justify-center text-center px-6">
-                                            <div className="w-20 h-20 bg-gray-50 rounded-xl flex items-center justify-center mb-6">
+                                            <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-6">
                                                 <ShoppingBag className="w-10 h-10 text-gray-200" />
                                             </div>
                                             <h3 className="text-lg font-bold text-gray-900 mb-2">Your bag is empty</h3>
@@ -312,7 +321,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                         <Link
                                             href="/checkout"
                                             onClick={onClose}
-                                            className="w-full bg-[#00a651] text-white py-4 rounded-lg text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#008c44] transition-all transform hover:translate-y-[-1px] shadow-lg shadow-green-900/10"
+                                            className="w-full bg-brand-soft-coral text-white py-4 rounded-lg text-xs font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-brand-soft-coral/90 transition-all transform hover:translate-y-[-1px] shadow-lg shadow-brand-soft-coral/10 font-outfit"
                                         >
                                             Proceed to Checkout <ArrowRight className="w-4 h-4" />
                                         </Link>
@@ -327,7 +336,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                             <button
                                                 form="checkout-form"
                                                 type="submit"
-                                                className="flex-[2] bg-[#00a651] text-white py-4 rounded-lg text-xs font-bold uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-[#008c44] transition-all shadow-lg shadow-green-900/10"
+                                                className="flex-[2] bg-cta-whatsapp text-white py-4 rounded-lg text-xs font-black uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-cta-whatsapp/90 transition-all shadow-lg shadow-cta-whatsapp/10 font-outfit"
                                             >
                                                 <Image
                                                     src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"

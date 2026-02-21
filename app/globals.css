@@ -1,23 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-peach: #FEE2E2;
-  --color-brand-cream: #FFFFFF;
-  --color-brand-stone: #DC2626;
-  --color-brand-accent: #10B981;
+  --color-bg-warm-beige: #F5EFE6;
+  --color-bg-soft-cream: #FFF8F2;
+  --color-brand-muted-peach: #F2B8A0;
+  --color-brand-soft-coral: #E89A7D;
+  --color-brand-sage-green: #8FA68E;
+  --color-text-deep-charcoal: #2F2F2F;
+  --color-text-warm-gray: #6E6A66;
+  --color-cta-whatsapp: #25D366;
+  --color-anchor-espresso: #4A3F35;
 
-  --background: var(--color-brand-cream);
-  --foreground: #1F2937;
+  --background: var(--color-bg-warm-beige);
+  --foreground: var(--color-text-deep-charcoal);
+  
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  
+  --shadow-soft: 0 10px 30px -10px rgba(74, 63, 53, 0.05);
 }
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #1F2937;
-  --peach: #FEE2E2;
-  --accent: #10B981;
-  --sidebar: #DC2626;
-  --link: #DC2626;
-  --button: #10B981;
+  --background: #F5EFE6;
+  --foreground: #2F2F2F;
+  --primary: #F2B8A0;
+  --secondary: #E89A7D;
+  --accent: #8FA68E;
+  --whatsapp: #25D366;
+  --anchor: #4A3F35;
 }
 
 body {
@@ -36,5 +46,20 @@ body {
 }
 
 .soft-shadow {
-  box-shadow: 0 10px 30px -10px rgba(187, 8, 15, 0.05);
+  box-shadow: var(--shadow-soft);
+}
+
+.grain-texture {
+  position: relative;
+}
+
+.grain-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

@@ -12,8 +12,6 @@ import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CartDrawer from '@/components/CartDrawer';
-import MobileMenu from '@/components/MobileMenu';
 import { sendWhatsAppOrder } from '@/utils/whatsapp-service';
 import apiClient from '@/lib/axios';
 import { toast } from 'react-hot-toast';
@@ -108,10 +106,8 @@ export default function CheckoutPage() {
 
 
     return (
-        <div className="min-h-screen bg-white">
-            <Header onCartClick={() => setIsCartOpen(true)} onMenuClick={() => setIsMenuOpen(true)} />
-            <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <div className="min-h-screen bg-bg-warm-beige/30">
+            <Header />
 
             {cart.length === 0 && !isOrderPlacing ? (
                 <EmptyBagState />
@@ -120,19 +116,19 @@ export default function CheckoutPage() {
                     {/* Banner Section */}
                     <div className="relative h-[300px] w-full mt-16 md:mt-20 overflow-hidden">
                         <Image
-                            src="https://images.unsplash.com/photo-1515562141207-7a88fb0ce335?q=80&w=2070&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1573408302185-06ff321cf6e6?q=80&w=2070&auto=format&fit=crop"
                             alt="Checkout"
                             fill
-                            className="object-cover"
+                            className="object-cover grayscale-[0.3]"
                         />
-                        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center">
-                            <h1 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase">Checkout</h1>
-                            <div className="flex items-center gap-2 mt-4 text-white/80 text-[10px] font-black uppercase tracking-widest">
-                                <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                                <ChevronRight className="w-4 h-4" />
-                                <Link href="/cart" className="hover:text-white transition-colors">Bag</Link>
-                                <ChevronRight className="w-4 h-4" />
-                                <span>Checkout</span>
+                        <div className="absolute inset-0 bg-anchor-espresso/40 backdrop-blur-[2px] flex flex-col items-center justify-center">
+                            <h1 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase font-outfit">Checkout</h1>
+                            <div className="flex items-center gap-2 mt-4 text-white/80 text-[10px] font-black uppercase tracking-[0.2em] font-outfit">
+                                <Link href="/" className="hover:text-brand-muted-peach transition-colors">Home</Link>
+                                <ChevronRight className="w-3 h-3" />
+                                <Link href="/cart" className="hover:text-brand-muted-peach transition-colors">Bag</Link>
+                                <ChevronRight className="w-3 h-3" />
+                                <span className="text-white">Checkout</span>
                             </div>
                         </div>
                     </div>
@@ -143,7 +139,7 @@ export default function CheckoutPage() {
                             <div className="lg:col-span-7 space-y-16">
                                 <CheckoutForm formData={formData} setFormData={setFormData} />
 
-                                <div className="h-px bg-gray-50" />
+                                <div className="h-px bg-anchor-espresso/5 shadow-sm" />
 
                                 <ShippingSelector
                                     deliveryZones={deliveryZones}
@@ -169,6 +165,6 @@ export default function CheckoutPage() {
                     </main>
                 </>
             )}
-       </div>
+        </div>
     );
 }

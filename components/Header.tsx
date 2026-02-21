@@ -6,17 +6,19 @@ import Link from 'next/link';
 import { ShoppingBag, Search, Menu, User, ChevronDown, LogOut } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
-    onCartClick: () => void;
-    onMenuClick: () => void;
+    // No props needed after globalizing cart state
 }
 
-export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
-    const { totalItems } = useCart();
+export default function Header({ }: HeaderProps) {
+    const { totalItems, setIsCartOpen } = useCart();
     const { user, logout, isAuthenticated } = useAuth();
+    const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,25 +28,29 @@ export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+        }
+    };
+
     return (
         <header
-            className={`fixed top-0 z-50 w-full bg-white border-b border-gray-100 transition-all duration-300 ${isScrolled ? 'py-2 shadow-sm' : 'py-4'}`}
+            className={`fixed top-0 z-50 w-full transition-all duration-300 border-b border-[#4A3F35]/5 ${isScrolled
+                ? 'py-2 bg-bg-warm-beige/90 backdrop-blur-md shadow-soft'
+                : 'py-4 bg-transparent'
+                }`}
         >
             <div className="container mx-auto px-4 flex items-center justify-between gap-8">
                 {/* Logo */}
                 <div className="flex items-center gap-4">
-                    <button
-                        onClick={onMenuClick}
-                        className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                    >
-                        <Menu className="w-6 h-6 text-gray-700" />
-                    </button>
                     <Link href="/" className="flex-shrink-0">
                         <Image
                             src="/logo1.svg"
                             alt="Logo"
-                            width={50}
-                            height={50}
+                            width={100}
+                            height={100}
                             className="h-10 w-auto"
                             priority
                         />
@@ -52,14 +58,18 @@ export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
                 </div>
 
                 {/* Search Bar (Centered) */}
-                <div className="hidden lg:flex flex-1 max-w-2xl relative">
+                <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-2xl relative">
                     <input
                         type="text"
-                        placeholder="Search"
-                        className="w-full bg-gray-100 border-none rounded-md py-2.5 pl-4 pr-10 text-sm focus:ring-1 focus:ring-gray-200 transition-all outline-none text-gray-700"
+                        placeholder="Search for jewelry, accessories..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-bg-soft-cream border border-[#4A3F35]/10 rounded-lg py-2.5 pl-4 pr-10 text-sm focus:ring-1 focus:ring-brand-muted-peach/30 transition-all outline-none text-text-deep-charcoal placeholder:text-text-warm-gray"
                     />
-                    <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                </div>
+                    <button type="submit">
+                        <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-warm-gray cursor-pointer" />
+                    </button>
+                </form>
 
                 {/* Right Icons */}
                 <div className="flex items-center gap-6">
@@ -73,7 +83,7 @@ export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
                                 className="object-cover"
                             />
                         </div>
-                        <span className="text-xs font-semibold text-gray-600 flex items-center gap-0.5 group-hover:text-black transition-colors">
+                        <span className="text-xs font-bold font-outfit text-text-warm-gray flex items-center gap-0.5 group-hover:text-text-deep-charcoal transition-colors uppercase tracking-wider">
                             NGN <ChevronDown className="w-3 h-3" />
                         </span>
                     </div>
@@ -99,7 +109,7 @@ export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
                     ) : (
                         <Link
                             href="/login"
-                            className="hidden md:flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                            className="hidden md:flex items-center gap-2 text-xs font-bold font-outfit text-text-warm-gray hover:text-text-deep-charcoal transition-colors uppercase tracking-widest"
                         >
                             Login
                         </Link>
@@ -107,7 +117,7 @@ export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
 
                     {/* Cart */}
                     <button
-                        onClick={onCartClick}
+                        onClick={() => setIsCartOpen(true)}
                         className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
                     >
                         <ShoppingBag className="w-6 h-6 text-gray-700" />
@@ -117,7 +127,7 @@ export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
                                     initial={{ scale: 0, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
                                     exit={{ scale: 0, opacity: 0 }}
-                                    className="absolute -top-1 -right-1 bg-brand-accent text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm"
+                                    className="absolute -top-1 -right-1 bg-brand-sage-green text-white text-[9px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-bg-warm-beige shadow-sm"
                                 >
                                     {totalItems}
                                 </motion.span>
@@ -126,9 +136,9 @@ export default function Header({ onCartClick, onMenuClick }: HeaderProps) {
                     </button>
 
                     {/* Mobile Search Icon */}
-                    <button className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <Link href="/search" className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors">
                         <Search className="w-6 h-6 text-gray-700" />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </header>

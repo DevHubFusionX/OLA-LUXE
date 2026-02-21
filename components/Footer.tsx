@@ -5,13 +5,13 @@ import { Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-black text-white pt-16 pb-8">
+        <footer className="bg-anchor-espresso text-bg-warm-beige pt-20 pb-12 grain-texture">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
                     {/* Contact Us */}
                     <div>
-                        <h3 className="text-sm font-bold uppercase tracking-widest mb-6">Contact Us</h3>
-                        <div className="space-y-4 text-sm text-gray-400">
+                        <h3 className="text-xs font-black uppercase tracking-[0.2em] mb-8 font-outfit text-brand-muted-peach">Contact Us</h3>
+                        <div className="space-y-5 text-sm text-bg-warm-beige/60">
                             <div className="flex items-center gap-3">
                                 <Phone className="w-4 h-4" />
                                 <span>08104978486</span>
@@ -28,14 +28,14 @@ export default function Footer() {
 
                     {/* Newsletter */}
                     <div>
-                        <h3 className="text-sm font-bold uppercase tracking-widest mb-6">Sign up for discounts & updates</h3>
+                        <h3 className="text-xs font-black uppercase tracking-[0.2em] mb-8 font-outfit text-brand-muted-peach">Newsletter</h3>
                         <div className="flex flex-col gap-3">
                             <input
                                 type="text"
-                                placeholder="Enter your phone number or email address"
-                                className="bg-gray-800 border-none rounded-sm px-4 py-3 text-sm focus:ring-1 focus:ring-gray-600 outline-none w-full"
+                                placeholder="Email or phone number"
+                                className="bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-muted-peach/50 outline-none w-full transition-all placeholder:text-white/30"
                             />
-                            <button className="bg-[#00a651] hover:bg-[#008c44] text-white py-3 px-6 rounded-sm text-sm font-bold uppercase transition-colors self-start lg:self-auto lg:w-max">
+                            <button className="bg-brand-sage-green hover:bg-brand-sage-green/90 text-white py-3.5 px-8 rounded-lg text-xs font-black uppercase tracking-widest transition-all shadow-soft self-start lg:self-auto lg:w-max">
                                 Subscribe
                             </button>
                         </div>
@@ -43,16 +43,16 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div className="flex gap-4">
-                        <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
-                            <Instagram className="w-5 h-5 text-gray-400" />
+                <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex gap-2">
+                        <button className="p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-all border border-white/5 text-bg-warm-beige/60">
+                            <Instagram className="w-5 h-5" />
                         </button>
-                        <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
-                            <Facebook className="w-5 h-5 text-gray-400" />
+                        <button className="p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-all border border-white/5 text-bg-warm-beige/60">
+                            <Facebook className="w-5 h-5" />
                         </button>
-                        <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
-                            <Twitter className="w-5 h-5 text-gray-400" />
+                        <button className="p-3 bg-white/5 hover:bg-white/10 rounded-xl transition-all border border-white/5 text-bg-warm-beige/60">
+                            <Twitter className="w-5 h-5" />
                         </button>
                     </div>
 

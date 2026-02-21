@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/Header';
-import MobileMenu from '@/components/MobileMenu';
 import ProductCard from '@/components/ProductCard';
-import CartDrawer from '@/components/CartDrawer';
 import ProductSkeleton from '@/components/ProductSkeleton';
 import { useProducts } from '@/hooks/useProducts';
 import { useCategories } from '@/hooks/useCategories';
@@ -12,8 +10,6 @@ import Hero from '@/components/home/Hero';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 
 export default function Home() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   const { data: categoriesData } = useCategories();
@@ -23,10 +19,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen pb-20">
-      <Header
-        onCartClick={() => setIsCartOpen(true)}
-        onMenuClick={() => setIsMenuOpen(true)}
-      />
+      <Header />
 
       <Hero />
 
@@ -70,9 +63,6 @@ export default function Home() {
       </section>
 
       <WhatsAppFAB />
-
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );
 }

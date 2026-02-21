@@ -12,20 +12,20 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     return (
-        <nav className="flex items-center gap-2 text-[10px] md:text-xs text-gray-400 uppercase tracking-widest">
-            <Link href="/" className="hover:text-black flex items-center gap-1">
-                <Home className="w-3 h-3" />
+        <nav className="flex items-center gap-3 text-[10px] text-text-warm-gray uppercase tracking-[0.3em] font-outfit">
+            <Link href="/" className="hover:text-text-deep-charcoal flex items-center gap-1 transition-colors">
+                <Home className="w-3.5 h-3.5" />
             </Link>
 
             {items.map((item, index) => (
                 <React.Fragment key={index}>
-                    <ChevronRight className="w-3 h-3 text-gray-300" />
+                    <ChevronRight className="w-3 h-3 text-brand-soft-coral/30" />
                     {item.href ? (
-                        <Link href={item.href} className="hover:text-black font-semibold">
+                        <Link href={item.href} className="hover:text-text-deep-charcoal font-black transition-colors uppercase">
                             {item.label}
                         </Link>
                     ) : (
-                        <span className="text-gray-500 font-semibold truncate max-w-[150px] md:max-w-none">
+                        <span className="text-text-deep-charcoal font-black truncate max-w-[150px] md:max-w-none uppercase">
                             {item.label}
                         </span>
                     )}

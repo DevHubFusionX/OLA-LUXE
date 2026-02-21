@@ -14,18 +14,20 @@ export default function Hero() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-center px-4">
+                <div className="absolute inset-0 bg-anchor-espresso/20 flex flex-col items-center justify-center text-center px-4 backdrop-blur-[1px]">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="flex flex-col items-center"
                     >
-                        <h1 className="text-3xl md:text-6xl font-bold text-white mb-2 tracking-tight uppercase italic">
-                            Welcome to
-                        </h1>
-                        <p className="text-lg md:text-2xl font-black text-white/90 tracking-widest italic uppercase">
+                        <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-brand-muted-peach mb-4 font-outfit">
+                            Premium Minimalist Jewelry
+                        </span>
+                        <h1 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase font-outfit italic">
                             Olaluxe.ng
-                        </p>
+                        </h1>
+                        <div className="h-[1px] w-12 bg-white/30" />
                     </motion.div>
                 </div>
             </div>

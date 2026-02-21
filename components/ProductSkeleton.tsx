@@ -2,16 +2,16 @@
 
 export default function ProductSkeleton() {
     return (
-        <div className="animate-pulse space-y-4">
+        <div className="animate-pulse flex flex-col h-full bg-bg-soft-cream rounded-lg overflow-hidden border border-anchor-espresso/5 shadow-soft">
             {/* Image placeholder */}
-            <div className="aspect-square rounded-[2rem] bg-gray-100 mb-4" />
-            <div className="space-y-3 px-2">
+            <div className="aspect-square bg-bg-warm-beige" />
+            <div className="p-5 flex flex-col flex-1 space-y-4">
                 {/* Product name */}
-                <div className="h-4 w-3/4 rounded-full bg-gray-100" />
+                <div className="h-2 w-3/4 rounded-full bg-bg-warm-beige" />
                 {/* Price */}
-                <div className="h-4 w-1/2 rounded-full bg-gray-100" />
+                <div className="h-3 w-1/2 rounded-full bg-bg-warm-beige" />
                 {/* Button */}
-                <div className="h-10 w-full rounded-2xl bg-gray-50 mt-4" />
+                <div className="mt-auto h-10 w-full rounded-lg bg-anchor-espresso/5" />
             </div>
         </div>
     );

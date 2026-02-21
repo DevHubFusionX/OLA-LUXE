@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CartDrawer from '@/components/CartDrawer';
-import MobileMenu from '@/components/MobileMenu';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/context/AuthContext';
 import { Mail, CheckCircle2, ArrowRight, RefreshCw } from 'lucide-react';
@@ -71,10 +69,7 @@ export default function LoginPage() {
 
     return (
         <main className="min-h-screen bg-white">
-            <Header
-                onCartClick={() => setIsCartOpen(true)}
-                onMenuClick={() => setIsMenuOpen(true)}
-            />
+            <Header />
 
             <div className="container mx-auto px-4 pt-40 pb-20">
                 <div className="max-w-md mx-auto">
@@ -201,8 +196,6 @@ export default function LoginPage() {
                 </div>
             </div>
 
-            <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         </main>
     );
 }

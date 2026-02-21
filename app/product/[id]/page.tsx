@@ -5,8 +5,6 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CartDrawer from '@/components/CartDrawer';
-import MobileMenu from '@/components/MobileMenu';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductGallery from '@/components/product/ProductGallery';
 import ProductInfo from '@/components/product/ProductInfo';
@@ -24,8 +22,8 @@ export default function ProductPage() {
 
     if (isLoading) {
         return (
-            <main className="min-h-screen bg-white">
-                <Header onCartClick={() => setIsCartOpen(true)} onMenuClick={() => setIsMenuOpen(true)} />
+            <main className="min-h-screen bg-bg-warm-beige/30">
+                <Header />
                 <div className="container mx-auto px-4 pt-32">
                     <ProductSkeleton />
                 </div>
@@ -35,12 +33,12 @@ export default function ProductPage() {
 
     if (isError || !product) {
         return (
-            <main className="min-h-screen bg-white flex flex-col">
-                <Header onCartClick={() => setIsCartOpen(true)} onMenuClick={() => setIsMenuOpen(true)} />
+            <main className="min-h-screen bg-bg-warm-beige/30 flex flex-col">
+                <Header />
                 <div className="flex-1 flex items-center justify-center pt-20">
                     <div className="text-center">
-                        <h1 className="text-2xl font-bold mb-4">{error?.message || 'Product not found'}</h1>
-                        <Link href="/" className="text-[#00a651] hover:underline">Back to Home</Link>
+                        <h1 className="text-2xl font-black mb-4 font-outfit text-text-deep-charcoal italic">{error?.message || 'Piece not found'}</h1>
+                        <Link href="/" className="text-brand-soft-coral hover:underline font-outfit uppercase tracking-widest text-xs font-black">Back to Atelier</Link>
                     </div>
                 </div>
             </main>
@@ -48,11 +46,8 @@ export default function ProductPage() {
     }
 
     return (
-        <main className="min-h-screen bg-white pb-20">
-            <Header
-                onCartClick={() => setIsCartOpen(true)}
-                onMenuClick={() => setIsMenuOpen(true)}
-            />
+        <main className="min-h-screen bg-bg-warm-beige/30 pb-20">
+            <Header />
 
             <div className="container mx-auto px-4 pt-28 pb-8">
                 <Breadcrumbs
@@ -73,13 +68,13 @@ export default function ProductPage() {
                 </div>
 
                 {/* Details Section */}
-                <div className="mt-20 border-t border-gray-100 pt-12">
-                    <div className="inline-block border-b-4 border-[#00a651] pb-2 mb-8">
-                        <h2 className="text-sm font-black text-gray-900 uppercase tracking-[0.2em] italic">
+                <div className="mt-24 border-t border-anchor-espresso/5 pt-16">
+                    <div className="inline-block border-b-2 border-brand-soft-coral pb-2 mb-10">
+                        <h2 className="text-[10px] font-black text-text-deep-charcoal uppercase tracking-[0.4em] font-outfit">
                             Product Details
                         </h2>
                     </div>
-                    <div className="prose prose-sm max-w-4xl text-gray-600 leading-relaxed font-medium">
+                    <div className="prose prose-sm max-w-4xl text-text-warm-gray leading-relaxed font-medium font-outfit">
                         {product.description}
                     </div>
                 </div>
@@ -87,8 +82,6 @@ export default function ProductPage() {
 
             <WhatsAppFAB />
 
-            <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         </main>
     );
 }

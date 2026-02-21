@@ -21,16 +21,16 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                     <button
                         key={idx}
                         onClick={() => setActiveImageIndex(idx)}
-                        className={`aspect-square relative rounded border-2 transition-all ${activeImageIndex === idx ? 'border-[#00a651] shadow-lg shadow-green-900/5' : 'border-gray-50 opacity-60 hover:opacity-100'}`}
+                        className={`aspect-square relative rounded-lg border transition-all duration-300 ${activeImageIndex === idx ? 'border-brand-soft-coral shadow-soft' : 'border-anchor-espresso/5 opacity-60 hover:opacity-100 bg-bg-warm-beige'}`}
                     >
-                        <Image src={img} alt="" fill className="object-cover rounded" sizes="80px" />
+                        <Image src={img} alt="" fill className="object-cover rounded-lg" sizes="80px" />
                     </button>
                 ))}
             </div>
 
             {/* Main Image */}
             <div className="lg:col-span-10 relative">
-                <div className="aspect-square relative bg-white border border-gray-50 rounded-[2rem] overflow-hidden group shadow-xl shadow-gray-200/50">
+                <div className="aspect-square relative bg-white border border-anchor-espresso/5 rounded-2xl overflow-hidden group shadow-soft">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeImageIndex}
@@ -54,19 +54,19 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                     <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
                         <button
                             onClick={() => setActiveImageIndex(prev => (prev - 1 + images.length) % images.length)}
-                            className="p-3 bg-white/90 hover:bg-white rounded-2xl shadow-xl text-gray-800 transition-all border border-gray-100"
+                            className="p-3 bg-white/95 hover:bg-white rounded-lg shadow-soft text-text-deep-charcoal transition-all border border-anchor-espresso/5"
                         >
                             <ChevronLeft className="w-5 h-5" />
                         </button>
                         <button
                             onClick={() => setActiveImageIndex(prev => (prev + 1) % images.length)}
-                            className="p-3 bg-white/90 hover:bg-white rounded-2xl shadow-xl text-gray-800 transition-all border border-gray-100"
+                            className="p-3 bg-white/95 hover:bg-white rounded-lg shadow-soft text-text-deep-charcoal transition-all border border-anchor-espresso/5"
                         >
                             <ChevronRight className="w-5 h-5" />
                         </button>
                     </div>
 
-                    <button className="absolute bottom-6 right-6 p-3 bg-white/90 hover:bg-white rounded-2xl shadow-xl text-gray-400 border border-gray-100 transition-all">
+                    <button className="absolute bottom-6 right-6 p-3 bg-white/95 hover:bg-white rounded-lg shadow-soft text-text-warm-gray/40 border border-anchor-espresso/5 transition-all">
                         <Maximize2 className="w-4 h-4" />
                     </button>
                 </div>
@@ -77,9 +77,9 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                         <button
                             key={idx}
                             onClick={() => setActiveImageIndex(idx)}
-                            className={`w-20 h-20 flex-shrink-0 relative rounded-2xl border-2 transition-all ${activeImageIndex === idx ? 'border-[#00a651] shadow-lg shadow-green-900/5' : 'border-gray-50'}`}
+                            className={`w-20 h-20 flex-shrink-0 relative rounded-lg border transition-all duration-300 ${activeImageIndex === idx ? 'border-brand-soft-coral shadow-soft' : 'border-anchor-espresso/5 bg-bg-warm-beige'}`}
                         >
-                            <Image src={img} alt="" fill className="object-cover rounded-2xl" sizes="80px" />
+                            <Image src={img} alt="" fill className="object-cover rounded-lg" sizes="80px" />
                         </button>
                     ))}
                 </div>

@@ -19,8 +19,6 @@ import { useAuth } from '@/context/AuthContext';
 import { useMyOrders } from '@/hooks/useMyOrders';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CartDrawer from '@/components/CartDrawer';
-import MobileMenu from '@/components/MobileMenu';
 import { format } from 'date-fns';
 
 export default function AccountPage() {
@@ -40,7 +38,7 @@ export default function AccountPage() {
     if (!isAuthenticated) {
         return (
             <div className="min-h-screen bg-white">
-                <Header onCartClick={() => setIsCartOpen(true)} onMenuClick={() => setIsMenuOpen(true)} />
+                <Header />
                 <main className="max-w-7xl mx-auto px-4 py-32 flex flex-col items-center justify-center text-center">
                     <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-8">
                         <User className="w-8 h-8 text-gray-200" />
@@ -63,9 +61,7 @@ export default function AccountPage() {
 
     return (
         <div className="min-h-screen bg-white">
-            <Header onCartClick={() => setIsCartOpen(true)} onMenuClick={() => setIsMenuOpen(true)} />
-            <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+            <Header />
 
             {/* Banner Section */}
             <div className="relative h-[240px] w-full mt-16 md:mt-20 overflow-hidden">

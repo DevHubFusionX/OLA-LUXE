@@ -22,10 +22,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -5 }}
             viewport={{ once: true }}
-            className="flex flex-col h-full group"
+            className="flex flex-col h-full group bg-bg-soft-cream rounded-lg overflow-hidden transition-all duration-300 hover:shadow-soft border border-anchor-espresso/5"
         >
-            <Link href={`/product/${product.id}`} className="flex flex-col h-full">
-                <div className="aspect-square relative overflow-hidden bg-gray-100 mb-3">
+            <Link href={`/product/${product.id}`} className="flex flex-col h-full grayscale-[0.2] hover:grayscale-0 transition-all duration-500">
+                <div className="aspect-square relative overflow-hidden bg-bg-warm-beige/50">
                     {product.images?.[0] ? (
                         <Image
                             src={product.images[0]}
@@ -40,31 +40,31 @@ export default function ProductCard({ product }: ProductCardProps) {
                         </div>
                     )}
                     {isOutOfStock && (
-                        <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
-                            <div className="bg-white border border-gray-200 px-4 py-2 rounded-sm shadow-sm flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-sm bg-gray-300" />
-                                <span className="text-xs font-medium text-gray-500">Out of Stock</span>
+                        <div className="absolute inset-0 bg-bg-warm-beige/60 flex items-center justify-center backdrop-blur-[2px]">
+                            <div className="bg-white/80 border border-anchor-espresso/10 px-4 py-2 rounded-lg shadow-soft flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-text-warm-gray" />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-text-warm-gray">Out of Stock</span>
                             </div>
                         </div>
                     )}
                 </div>
 
-                <div className="flex flex-col flex-1 px-1">
-                    <h3 className="text-xs font-black text-gray-900 uppercase tracking-tight italic line-clamp-2 mb-1 group-hover:text-[#00a651] transition-colors">
+                <div className="flex flex-col flex-1 p-5">
+                    <h3 className="text-[10px] font-black text-text-deep-charcoal uppercase tracking-[0.1em] font-outfit line-clamp-2 mb-2 group-hover:text-brand-soft-coral transition-colors">
                         {product.name}
                     </h3>
-                    <p className="text-sm font-black text-gray-900 mb-4 italic tracking-tighter">
+                    <p className="text-sm font-black text-text-deep-charcoal mb-4 font-outfit tracking-tighter">
                         ₦{product.price.toLocaleString()}
                     </p>
 
                     <div className="mt-auto">
                         {isOutOfStock ? (
-                            <div className="w-full flex items-center justify-center gap-2 border border-gray-100 text-gray-300 py-3 rounded-lg text-[10px] font-black uppercase tracking-widest cursor-not-allowed">
+                            <div className="w-full flex items-center justify-center gap-2 border border-anchor-espresso/5 text-text-warm-gray/40 py-3.5 rounded-lg text-[10px] font-black uppercase tracking-widest cursor-not-allowed bg-anchor-espresso/5">
                                 Out of Stock
                             </div>
                         ) : (
                             <div
-                                className="w-full bg-gray-50 group-hover:bg-[#00a651] group-hover:text-white text-gray-900 py-3 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all duration-300 text-center shadow-sm group-hover:shadow-lg group-hover:shadow-green-900/10"
+                                className="w-full bg-brand-muted-peach/10 group-hover:bg-brand-soft-coral text-brand-soft-coral group-hover:text-white py-3.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all duration-500 text-center font-outfit"
                             >
                                 View Piece
                             </div>

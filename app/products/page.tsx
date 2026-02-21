@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/Header';
-import MobileMenu from '@/components/MobileMenu';
 import ProductCard from '@/components/ProductCard';
-import CartDrawer from '@/components/CartDrawer';
 import ProductSkeleton from '@/components/ProductSkeleton';
 import { useProducts } from '@/hooks/useProducts';
 import { useCategories } from '@/hooks/useCategories';
@@ -12,8 +10,6 @@ import CollectionHeader from '@/components/products/CollectionHeader';
 import CategoryFilters from '@/components/products/CategoryFilters';
 
 export default function ProductsPage() {
-    const [isCartOpen, setIsCartOpen] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeCategory, setActiveCategory] = useState<string>('All');
 
     const { data: categoriesData } = useCategories();
@@ -23,10 +19,7 @@ export default function ProductsPage() {
 
     return (
         <main className="min-h-screen bg-white pb-20 pt-28">
-            <Header
-                onCartClick={() => setIsCartOpen(true)}
-                onMenuClick={() => setIsMenuOpen(true)}
-            />
+            <Header />
 
             <div className="container mx-auto px-4 py-8">
                 {/* Collection Header */}
@@ -73,9 +66,6 @@ export default function ProductsPage() {
                     </div>
                 )}
             </div>
-
-            <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-            <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         </main>
     );
 }
