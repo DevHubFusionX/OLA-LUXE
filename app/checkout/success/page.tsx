@@ -35,7 +35,7 @@ export default function CheckoutSuccessPage() {
 
     return (
         <div className="min-h-screen bg-white">
-            <Header onCartClick={() => { }} onMenuClick={() => { }} />
+            <Header />
 
             <main className="max-w-7xl mx-auto px-4 py-32 flex flex-col items-center justify-center text-center">
                 <motion.div
